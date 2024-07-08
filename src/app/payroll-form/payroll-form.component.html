@@ -1,0 +1,27 @@
+<div class="payroll-form">
+    <h2>{{ isEditMode ? 'Update Payroll' : 'Add Payroll' }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="employeeId">Employee ID:</label>
+        <input type="number" [(ngModel)]="payroll.employeeId" name="employeeId" required>
+      </div>
+      <div>
+        <label for="salary">Salary:</label>
+        <input type="number" [(ngModel)]="payroll.salary" name="salary" required>
+      </div>
+      <div>
+        <label for="deductions">Deductions:</label>
+        <input type="number" [(ngModel)]="payroll.deductions" name="deductions" required>
+      </div>
+      <div>
+        <label for="bonuses">Bonuses:</label>
+        <input type="number" [(ngModel)]="payroll.bonuses" name="bonuses" required>
+      </div>
+      <div>
+        <label for="taxInformation">Tax Information:</label>
+        <input type="text" [(ngModel)]="payroll.taxInformation" name="taxInformation" required>
+      </div>
+      <button type="submit">{{ isEditMode ? 'Update Payroll' : 'Add Payroll' }}</button>
+    </form>
+  </div>
+  

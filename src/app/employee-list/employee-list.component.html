@@ -1,0 +1,33 @@
+<div class="employee-list">
+    <h2>Employee List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Address</th>
+          <th>Date of Birth</th>
+          <th>Hire Date</th>
+          <th>Position</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.phoneNumber }}</td>
+          <td>{{ employee.address }}</td>
+          <td>{{ employee.dateOfBirth }}</td>
+          <td>{{ employee.hireDate }}</td>
+          <td>{{ employee.position }}</td>
+          <td>
+            <button *ngIf="employee.id !== undefined" (click)="editEmployee(employee.id)">Edit</button>
+          <button *ngIf="employee.id !== undefined" (click)="deleteEmployee(employee.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

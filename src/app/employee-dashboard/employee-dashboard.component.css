@@ -1,0 +1,82 @@
+.employee-dashboard {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.employee-dashboard h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.employee-dashboard button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.employee-dashboard button:hover {
+  background-color: #0056b3;
+}
+
+.employee-dashboard button:focus {
+  outline: none;
+}
+
+.employee-dashboard form {
+  margin-top: 20px;
+}
+
+.employee-dashboard label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.employee-dashboard input[type="text"],
+.employee-dashboard input[type="email"],
+.employee-dashboard input[type="date"] {
+  padding: 8px;
+  width: calc(100% - 16px);
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.employee-dashboard input[readonly] {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.employee-dashboard button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.employee-dashboard button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.employee-dashboard button[type="submit"]:active {
+  background-color: #1e7e34;
+  transform: translateY(1px);
+}

@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* global color variables */
+:root {
+    --fdx-purple: #4d148c;
+    --fdx-purple-semi-transparent: #4d148c85;
+    --fdx-purple-light: #5b2c8d;
+    --fdx-purple-disabled : #6e5785;
+    --fdx-orange: #ff6600;
+    --fdx-orange-semi-transparent: #ff660085;
+    --fdx-orange-light: #fc7e2aa2;
+    --fdx-orange-dark: #cd5200;
+    --grey-semi-transparent: rgba(31, 31, 31, 0.652);
+  }
+
+  @font-face {
+    font-family: montBold;
+    src: url("./assets/Montserrat-Bold.ttf");
+  }
+  
+  @font-face {
+    font-family: montRegular;
+    src: url("./assets/Montserrat-Regular.ttf");
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

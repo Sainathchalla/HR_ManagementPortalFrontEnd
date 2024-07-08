@@ -1,0 +1,29 @@
+<div class="payroll-list">
+    <h2>Payrolls</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Salary</th>
+          <th>Deductions</th>
+          <th>Bonuses</th>
+          <th>Tax Information</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payroll of payrolls">
+          <td>{{ payroll.employeeId }}</td>
+          <td>{{ payroll.salary }}</td>
+          <td>{{ payroll.deductions }}</td>
+          <td>{{ payroll.bonuses }}</td>
+          <td>{{ payroll.taxInformation }}</td>
+          <td>
+            <button (click)="editPayroll(payroll)">Edit</button>
+            <button (click)="deletePayroll(payroll.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

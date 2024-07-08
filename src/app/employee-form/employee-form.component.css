@@ -1,0 +1,53 @@
+.employee-form {
+  width: 400px;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.employee-form h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.employee-form form {
+  display: grid;
+  gap: 10px;
+}
+
+.employee-form label {
+  font-weight: bold;
+}
+
+.employee-form input[type="text"],
+.employee-form input[type="email"],
+.employee-form input[type="password"],
+.employee-form input[type="date"] {
+  width: calc(100% - 20px); /* Adjust width as needed */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.employee-form button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.employee-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.employee-form button[type="submit"]:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+}

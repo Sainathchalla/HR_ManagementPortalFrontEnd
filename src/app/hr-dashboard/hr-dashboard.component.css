@@ -1,0 +1,38 @@
+.hr-dashboard {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .hr-dashboard h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .hr-dashboard button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .hr-dashboard button:hover {
+    background-color: #0056b3;
+  }
+  
+  .hr-dashboard button:active {
+    background-color: #0056b3;
+    transform: translateY(1px);
+  }
+  

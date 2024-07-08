@@ -1,0 +1,61 @@
+<div class="employee-dashboard">
+    <h2>Employee Dashboard</h2>
+    <button (click)="showDetails = !showDetails; showPayroll = false">View Details</button>
+    <button (click)="togglePayroll()">View Payroll</button>
+    <button (click)="logout()">Logout</button>
+    
+    <div *ngIf="showDetails">
+      <form (ngSubmit)="saveEmployeeDetails()">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" [(ngModel)]="employee.name" name="name" readonly>
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" [(ngModel)]="employee.phoneNumber" name="phoneNumber">
+        </div>
+        <div>
+          <label for="address">Address:</label>
+          <input type="text" [(ngModel)]="employee.address" name="address">
+        </div>
+        <div>
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input type="date" [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" readonly>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" [(ngModel)]="employee.email" name="email" readonly>
+        </div>
+        <div>
+          <label for="hireDate">Hire Date:</label>
+          <input type="date" [(ngModel)]="employee.hireDate" name="hireDate" readonly>
+        </div>
+        <div>
+          <label for="position">Position:</label>
+          <input type="text" [(ngModel)]="employee.position" name="position" readonly>
+        </div>
+        <button type="submit">Save Details</button>
+      </form>
+    </div>
+  
+    <div *ngIf="showPayroll && payrollData">
+      <h3>Payroll Details</h3>
+      <div>
+        <label for="salary">Salary:</label>
+        <input type="text" [(ngModel)]="payrollData.salary" name="salary" readonly>
+      </div>
+      <div>
+        <label for="bonuses">Bonuses:</label>
+        <input type="text" [(ngModel)]="payrollData.bonuses" name="bonuses" readonly>
+      </div>
+      <div>
+        <label for="deductions">Deductions:</label>
+        <input type="text" [(ngModel)]="payrollData.deductions" name="deductions" readonly>
+      </div>
+      <div>
+        <label for="taxInformation">Tax Information:</label>
+        <input type="text" [(ngModel)]="payrollData.taxInformation" name="taxInformation" readonly>
+      </div>
+    </div>
+  </div>
+  
