@@ -14,14 +14,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'hr-dashboard', component: HrDashboardComponent, canActivate: [AuthGuard] },
   { path: 'employee-dashboard', component: EmployeeDashboardComponent, canActivate: [AuthGuard]},
-  { path: 'add-employee', component: EmployeeFormComponent },
-  { path: 'view-employees', component: EmployeeListComponent },
+  { path: 'add-employee', component: EmployeeFormComponent, canActivate: [AuthGuard]},
+  { path: 'view-employees', component: EmployeeListComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'edit-employee/:id', component: EmployeeFormComponent },
-  { path: 'payroll-list', component: PayrollListComponent },
-  { path: 'edit-payroll/:id', component: PayrollFormComponent },
-  { path: 'add-payroll', component: PayrollFormComponent },
-  { path: 'view-payroll', component: PayrollListComponent },
+  { path: 'edit-employee/:id', component: EmployeeFormComponent, canActivate: [AuthGuard]},
+  { path: 'payroll-list', component: PayrollListComponent, canActivate: [AuthGuard] },
+  { path: 'edit-payroll/:id', component: PayrollFormComponent, canActivate: [AuthGuard] },
+  { path: 'add-payroll', component: PayrollFormComponent, canActivate: [AuthGuard] },
+  { path: 'view-payroll', component: PayrollListComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

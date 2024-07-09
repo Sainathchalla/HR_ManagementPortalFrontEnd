@@ -25,12 +25,6 @@ export class EmployeeService {
     return this.http.get<Employee>(`${this.apiUrl}/${id}`);
   }
 
-  // updateEmployee(id: number, employee: Partial<Employee>): Observable<Employee> {
-  //   const { phoneNumber, address } = employee; // Destructure to get specific fields
-  //   const body = { phoneNumber, address }; // Create a body with only the fields to update
-  
-  //   return this.http.put<Employee>(`${this.apiUrl}/${id}`, body);
-  // }
   updateEmployee(id: number, employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(`${this.apiUrl}/${id}`, employee);
   }
