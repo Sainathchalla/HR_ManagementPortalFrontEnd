@@ -1,0 +1,24 @@
+<!-- project-form.component.html -->
+<div class="project-form">
+    <h2>{{ isEditMode ? 'Update Project' : 'Add Project' }}</h2>
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Project Name:</label>
+        <input id="name" type="text" formControlName="name" required>
+      </div>
+      <div>
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" type="date" formControlName="startDate" required>
+      </div>
+      <div>
+        <label for="endDate">End Date:</label>
+        <input id="endDate" type="date" formControlName="endDate" required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description" required></textarea>
+      </div>
+      <button type="submit">{{ isEditMode ? 'Update Project' : 'Add Project' }}</button>
+    </form>
+  </div>
+  

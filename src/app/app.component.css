@@ -1,3 +1,4 @@
+/* Styles for parent and child containers */
 .parent {
     position: relative;
     width: 100%;
@@ -12,34 +13,55 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
+/* Styles for navigation bar */
 .nav-bar {
     background-color: var(--fdx-purple);
     display: flex;
-    align-items: center;
+    justify-content: space-between; /* Space between logo and heading */
+    align-items: center; /* Centers content vertically */
     width: 100%;
     height: 70px;
     position: fixed;
     top: 0;
     z-index: 100;
+    padding: 0 20px; /* Adds padding to the sides */
+}
+
+.nav-bar img {
+    height: 50px;
 }
 
 .nav-bar h1 {
     color: white;
-    margin-left: 37%; /* Add margin to separate it from the logo */
+    margin: 0 auto;
+    font-size: 1.5em;
+    font-weight: normal;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#logo {
-    height: 50px;
-    margin: auto 20px auto 0; /* Centers the logo horizontally and adds space on the right */
-}
-
+/* Styles for main content */
 .main-content {
-    margin-top: 100px;
+    margin-top: 70px; /* Matches the height of the navbar */
     overflow-y: auto;
     width: 100%;
     height: calc(100% - 70px);
+    padding: 20px; /* Adds padding to the content */
 }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-bar h1 {
+        font-size: 1.2em; /* Reduces font size on smaller screens */
+    }
+
+    .main-content {
+        padding: 15px; /* Adjusts padding for smaller screens */
+    }
+}
+

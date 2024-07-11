@@ -1,0 +1,36 @@
+<!-- <div class="assign-employees">
+    <h2>Assign Employees to Project</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="employees">Select Employees:</label>
+        <select id="employees" multiple [(ngModel)]="selectedEmployees" name="employees">
+          <option *ngFor="let employee of employees" [value]="employee.id">
+            {{ employee.name }}
+          </option>
+        </select>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+   -->
+
+   <div class="assign-employees">
+    <h2>Assign Employees to Project</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label>Select Employees:</label>
+        <div *ngFor="let employee of employees">
+          <input
+            type="checkbox"
+            [id]="employee.id"
+            [value]="employee.id"
+            (change)="onCheckboxChange($event)"
+            [checked]="selectedEmployees.includes(employee.id)"
+          />
+          <label [for]="employee.id">{{ employee.name }}</label>
+        </div>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+  

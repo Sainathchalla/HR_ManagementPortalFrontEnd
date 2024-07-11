@@ -8,6 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { PayrollListComponent } from './payroll-list/payroll-list.component';
 import { PayrollFormComponent } from './payroll-form/payroll-form.component';
 import { AuthGuard } from './services/auth.guard';
+import { AddProjectComponent } from './add-project/add-project.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { AssignEmployeesComponent } from './assign-employees/assign-employees.component';
 
 
 const routes: Routes = [
@@ -22,6 +25,10 @@ const routes: Routes = [
   { path: 'edit-payroll/:id', component: PayrollFormComponent, canActivate: [AuthGuard] },
   { path: 'add-payroll', component: PayrollFormComponent, canActivate: [AuthGuard] },
   { path: 'view-payroll', component: PayrollListComponent, canActivate: [AuthGuard] },
+  { path: 'add-project', component: AddProjectComponent },
+  { path: 'edit-project/:id', component: AddProjectComponent},
+  { path: 'view-projects', component: ProjectListComponent },
+  { path: 'assign-employees/:projectId', component: AssignEmployeesComponent}
 ];
 
 @NgModule({

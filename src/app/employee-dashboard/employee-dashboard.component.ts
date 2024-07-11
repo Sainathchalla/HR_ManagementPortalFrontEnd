@@ -6,6 +6,8 @@ import { LoginService } from '../services/login.service';
 import { PayrollService } from '../services/payroll.service';
 import { Payroll } from '../models/payroll.model';
 import { Router } from '@angular/router';
+import { Project } from '../models/project.model';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -27,15 +29,18 @@ export class EmployeeDashboardComponent implements OnInit {
   };
 
   payrollData: Payroll | null = null;
+  assignedProjects: Project[] = []; // Array to hold assigned projects
   showPayroll: boolean = false;
   showDetails: boolean = false;
+  showProjects: boolean = false;
 
-  constructor(private employeeService: EmployeeService, private loginService: LoginService, private payrollService: PayrollService, private router: Router) {}
+  constructor(private employeeService: EmployeeService, private loginService: LoginService, private payrollService: PayrollService, private router: Router, private projectService: ProjectService,) {}
 
   ngOnInit(): void {
     const employeeId = this.loginService.getEmployeeId();
     if (employeeId !== null) {
       this.loadEmployeeDetails(employeeId);
+      this.loadAssignedProjects(employeeId);
     } else {
       console.error('Employee ID is null.');
     }
@@ -68,6 +73,17 @@ export class EmployeeDashboardComponent implements OnInit {
     }
   }
 
+  loadAssignedProjects(employeeId: number) {
+    this.projectService.getAssignedProjects(employeeId).subscribe({
+      next: (data: Project[]) => {
+        this.assignedProjects = data;
+      },
+      error: (error) => {
+        console.error('Error loading assigned projects:', error);
+      }
+    });
+  }
+
   togglePayroll() {
     this.showPayroll = !this.showPayroll;
     this.showDetails = false;
@@ -86,6 +102,24 @@ export class EmployeeDashboardComponent implements OnInit {
         },
         error: (error: any) => {
           console.error('Error getting payroll ID:', error);
+        }
+      });
+    }
+  }
+
+
+  viewAssignedProjects() {
+    this.showDetails = false;
+    this.showPayroll = false;
+    this.showProjects = !this.showProjects;
+    // Fetch assigned projects if the section is to be shown
+    if (this.showProjects && this.employee.id !== undefined) {
+      this.projectService.getAssignedProjects(this.employee.id).subscribe({
+        next: (data: Project[]) => {
+          this.assignedProjects = data;
+        },
+        error: (error) => {
+          console.error('Error loading assigned projects:', error);
         }
       });
     }

@@ -1,0 +1,83 @@
+.project-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.project-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.project-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.project-form input[type="text"],
+.project-form input[type="date"],
+.project-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.project-form textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.project-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.project-form button:hover {
+  background-color: #218838;
+}
+
+.project-form button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .project-form {
+    padding: 15px;
+  }
+
+  .project-form h2 {
+    font-size: 20px;
+  }
+
+  .project-form input[type="text"],
+  .project-form input[type="date"],
+  .project-form textarea {
+    font-size: 14px;
+  }
+
+  .project-form button {
+    font-size: 14px;
+  }
+}

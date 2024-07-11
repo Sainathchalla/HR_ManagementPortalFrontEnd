@@ -1,0 +1,46 @@
+.project-list {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .project-list h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .project-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .project-list th, .project-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .project-list th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .project-list button {
+    padding: 5px 10px;
+    margin-right: 5px; /* Add margin between buttons */
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .project-list button:hover {
+    background-color: #0056b3;
+  }
+  

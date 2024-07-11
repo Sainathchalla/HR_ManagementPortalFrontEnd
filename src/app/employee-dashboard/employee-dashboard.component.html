@@ -1,7 +1,8 @@
 <div class="employee-dashboard">
     <h2>Employee Dashboard</h2>
-    <button (click)="showDetails = !showDetails; showPayroll = false">View Details</button>
+    <button (click)="showDetails = !showDetails; showPayroll = false; showProjects = false">View Details</button>
     <button (click)="togglePayroll()">View Payroll</button>
+    <button (click)="viewAssignedProjects()">View Assigned Projects</button> <!-- New button -->
     <button (click)="logout()">Logout</button>
     
     <div *ngIf="showDetails">
@@ -56,6 +57,32 @@
         <label for="taxInformation">Tax Information:</label>
         <input type="text" [(ngModel)]="payrollData.taxInformation" name="taxInformation" readonly>
       </div>
+    </div>
+
+    <div *ngIf="showProjects && assignedProjects.length > 0">
+      <h3>Assigned Projects</h3>
+      <table class="project-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of assignedProjects">
+            <td>{{ project.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.startDate | date }}</td>
+            <td>{{ project.endDate | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="showProjects && assignedProjects.length === 0">
+      <p>No assigned projects.</p>
     </div>
   </div>
   

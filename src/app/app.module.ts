@@ -8,10 +8,13 @@ import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { PayrollListComponent } from './payroll-list/payroll-list.component';
 import { PayrollFormComponent } from './payroll-form/payroll-form.component';
+import { AddProjectComponent } from './add-project/add-project.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { AssignEmployeesComponent } from './assign-employees/assign-employees.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,16 @@ import { PayrollFormComponent } from './payroll-form/payroll-form.component';
     EmployeeListComponent,
     EmployeeDashboardComponent,
     PayrollListComponent,
-    PayrollFormComponent
+    PayrollFormComponent,
+    AddProjectComponent,
+    ProjectListComponent,
+    AssignEmployeesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
