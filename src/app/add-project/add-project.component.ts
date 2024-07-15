@@ -4,6 +4,7 @@ import { ProjectService } from '../services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Project } from '../models/project.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-project',
@@ -21,7 +22,8 @@ export class AddProjectComponent implements OnInit {
     private fb: FormBuilder,
     private projectService: ProjectService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.projectForm = this.fb.group({
       name: ['', Validators.required],
@@ -67,23 +69,34 @@ export class AddProjectComponent implements OnInit {
     this.projectService.addProject(this.projectForm.value).subscribe(
       response => {
         console.log('Project added successfully:', response);
-        this.router.navigate(['/view-projects']);
+        this.snackBar.open('Project added successfully', 'Close', {
+          duration: 3000, // Duration in milliseconds
+        });
+        this.projectForm.reset();
       },
       error => {
         console.error('Error adding project:', error);
+        this.snackBar.open('Error adding project', 'Close', {
+          duration: 3000,
+        });
       }
     );
   }
-
+  
   updateProject(): void {
     if (this.projectId !== null) {
       this.projectService.updateProject(this.projectId, this.projectForm.value).subscribe(
         () => {
           console.log('Project updated successfully');
-          this.router.navigate(['/view-projects']);
+          this.snackBar.open('Project updated successfully', 'Close', {
+            duration: 3000,
+          });
         },
         error => {
           console.error('Error updating project:', error);
+          this.snackBar.open('Error updating project', 'Close', {
+            duration: 3000,
+          });
         }
       );
     }

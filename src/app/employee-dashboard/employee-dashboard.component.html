@@ -2,11 +2,15 @@
     <h2>Employee Dashboard</h2>
     <button (click)="showDetails = !showDetails; showPayroll = false; showProjects = false">View Details</button>
     <button (click)="togglePayroll()">View Payroll</button>
-    <button (click)="viewAssignedProjects()">View Assigned Projects</button> <!-- New button -->
+    <button (click)="viewAssignedProjects()">View Assigned Projects</button> 
     <button (click)="logout()">Logout</button>
     
     <div *ngIf="showDetails">
       <form (ngSubmit)="saveEmployeeDetails()">
+        <div>
+          <label for="employeeId">Employee ID:</label>
+          <input type="text" [(ngModel)]="employee.id" name="employeeId" readonly>
+        </div>
         <div>
           <label for="name">Name:</label>
           <input type="text" [(ngModel)]="employee.name" name="name" readonly>
@@ -64,23 +68,56 @@
       <table class="project-table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Description</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let project of assignedProjects">
+            <td>{{ project.id }}</td>
             <td>{{ project.name }}</td>
             <td>{{ project.description }}</td>
             <td>{{ project.startDate | date }}</td>
             <td>{{ project.endDate | date }}</td>
+            <td>
+              <button (click)="loadProjectEmployees(project.id!)">Team</button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-  
+
+    <div *ngIf="showProjectEmployees && selectedProjectEmployees.length > 0">
+      <h3>Team Members</h3>
+      <table class="employee-table">
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of selectedProjectEmployees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.phoneNumber }}</td>
+            <td>{{ employee.position }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="showPayroll && payrollData === null">
+      <p>No assigned payrolls.</p>
+    </div>
     <div *ngIf="showProjects && assignedProjects.length === 0">
       <p>No assigned projects.</p>
     </div>

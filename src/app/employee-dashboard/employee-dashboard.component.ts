@@ -8,6 +8,7 @@ import { Payroll } from '../models/payroll.model';
 import { Router } from '@angular/router';
 import { Project } from '../models/project.model';
 import { ProjectService } from '../services/project.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -28,13 +29,18 @@ export class EmployeeDashboardComponent implements OnInit {
     position: ''
   };
 
-  payrollData: Payroll | null = null;
-  assignedProjects: Project[] = []; // Array to hold assigned projects
   showPayroll: boolean = false;
   showDetails: boolean = false;
   showProjects: boolean = false;
+  
+  assignedProjects: Project[] = []; // Replace any[] with your actual type for projects
+  payrollData: Payroll | undefined; // Replace any with your actual payroll data type
 
-  constructor(private employeeService: EmployeeService, private loginService: LoginService, private payrollService: PayrollService, private router: Router, private projectService: ProjectService,) {}
+  selectedProjectEmployees: Employee[] = [];
+  showProjectEmployees: boolean = false;
+  selectedProjectId: number | null = null;
+
+  constructor(private employeeService: EmployeeService, private loginService: LoginService, private payrollService: PayrollService, private router: Router, private projectService: ProjectService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     const employeeId = this.loginService.getEmployeeId();
@@ -59,19 +65,28 @@ export class EmployeeDashboardComponent implements OnInit {
   }
 
   saveEmployeeDetails() {
-    if (this.employee.id !== undefined) {
+    if (this.employee?.id !== undefined) {
       this.employeeService.updateEmployee(this.employee.id, this.employee).subscribe({
         next: () => {
-          alert('Details updated successfully');
+          this.snackBar.open('Details updated successfully', 'Close', {
+            duration: 3000,
+          });
+          // alert('Details updated successfully');
         },
         error: (error) => {
           console.error('Error updating employee details:', error);
+
+          this.snackBar.open('Error updating employee details', 'Close', {
+            duration: 3000,
+            panelClass: ['error-snackbar']
+          });
         }
       });
     } else {
       console.error('Employee ID is undefined.');
     }
   }
+
 
   loadAssignedProjects(employeeId: number) {
     this.projectService.getAssignedProjects(employeeId).subscribe({
@@ -88,7 +103,10 @@ export class EmployeeDashboardComponent implements OnInit {
     this.showPayroll = !this.showPayroll;
     this.showDetails = false;
 
-    if (this.showPayroll && this.employee.id !== undefined) {
+    //
+    this.showProjects = false;
+
+    if (this.showPayroll && this.employee?.id !== undefined) {
       this.payrollService.getPayrollId(this.employee.id).subscribe({
         next: (payrollId: number) => {
           this.payrollService.getPayrollDetails(payrollId).subscribe({
@@ -107,13 +125,12 @@ export class EmployeeDashboardComponent implements OnInit {
     }
   }
 
-
   viewAssignedProjects() {
     this.showDetails = false;
     this.showPayroll = false;
     this.showProjects = !this.showProjects;
     // Fetch assigned projects if the section is to be shown
-    if (this.showProjects && this.employee.id !== undefined) {
+    if (this.showProjects && this.employee?.id !== undefined) {
       this.projectService.getAssignedProjects(this.employee.id).subscribe({
         next: (data: Project[]) => {
           this.assignedProjects = data;
@@ -125,8 +142,31 @@ export class EmployeeDashboardComponent implements OnInit {
     }
   }
 
+  loadProjectEmployees(projectId: number) {
+    if (this.selectedProjectId === projectId) {
+      // If the same project is clicked again, toggle the visibility
+      this.showProjectEmployees = !this.showProjectEmployees;
+      if (!this.showProjectEmployees) {
+        // If hiding, clear the selected project id and employee list
+        this.selectedProjectId = null;
+        this.selectedProjectEmployees = [];
+      }
+    } else {
+      // If a different project is selected, fetch the employees
+      this.projectService.getEmployeesDetailsByProjectId(projectId).subscribe({
+        next: (data: any[]) => {
+          this.selectedProjectEmployees = data;
+          this.showProjectEmployees = true;
+          this.selectedProjectId = projectId;
+        },
+        error: (error) => {
+          console.error('Error loading project employees:', error);
+        }
+      });
+    }
+  }
+
   logout() {
-    // Implement your logic to logout
     this.loginService.clearEmployeeId(); // Clear employee ID from session storage
     this.router.navigate(['/login']); // Redirect to the login page
   }

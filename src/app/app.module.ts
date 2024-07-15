@@ -15,6 +15,8 @@ import { PayrollFormComponent } from './payroll-form/payroll-form.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { AssignEmployeesComponent } from './assign-employees/assign-employees.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AssignEmployeesComponent } from './assign-employees/assign-employees.co
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     provideHttpClient()
