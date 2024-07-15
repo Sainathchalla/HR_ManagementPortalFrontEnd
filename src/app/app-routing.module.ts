@@ -25,10 +25,10 @@ const routes: Routes = [
   { path: 'edit-payroll/:id', component: PayrollFormComponent, canActivate: [AuthGuard] },
   { path: 'add-payroll', component: PayrollFormComponent, canActivate: [AuthGuard] },
   { path: 'view-payroll', component: PayrollListComponent, canActivate: [AuthGuard] },
-  { path: 'add-project', component: AddProjectComponent },
-  { path: 'edit-project/:id', component: AddProjectComponent},
-  { path: 'view-projects', component: ProjectListComponent },
-  { path: 'assign-employees/:projectId', component: AssignEmployeesComponent}
+  { path: 'add-project', component: AddProjectComponent, canActivate: [AuthGuard] },
+  { path: 'edit-project/:id', component: AddProjectComponent, canActivate: [AuthGuard]},
+  { path: 'view-projects', component: ProjectListComponent, canActivate: [AuthGuard] },
+  { path: 'assign-employees/:projectId', component: AssignEmployeesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
