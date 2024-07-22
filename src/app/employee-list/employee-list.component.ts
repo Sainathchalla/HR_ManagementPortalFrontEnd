@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from '../services/employee.service';
 import { Router } from '@angular/router';
+import { PayrollService } from '../services/payroll.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
 
-  constructor(private employeeService: EmployeeService, private router: Router) {}
+  constructor(private employeeService: EmployeeService, private router: Router, private payrollService: PayrollService) {}
 
   ngOnInit(): void {
     this.loadEmployees();

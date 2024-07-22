@@ -9,7 +9,7 @@
         <label for="email">Email:</label>
         <input type="email" [(ngModel)]="employee.email" name="email" required>
       </div>
-      <div>
+      <div *ngIf="!isEditMode">
         <label for="password">Password:</label>
         <input type="password" [(ngModel)]="employee.password" name="password" required>
       </div>

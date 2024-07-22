@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from '../services/employee.service';
 import { LoginComponent } from '../login/login.component';
@@ -9,13 +9,15 @@ import { Router } from '@angular/router';
 import { Project } from '../models/project.model';
 import { ProjectService } from '../services/project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.css']
 })
-export class EmployeeDashboardComponent implements OnInit {
+export class EmployeeDashboardComponent implements OnInit, OnDestroy {
 
   employee: Employee = {
     id: 0,
@@ -40,7 +42,11 @@ export class EmployeeDashboardComponent implements OnInit {
   showProjectEmployees: boolean = false;
   selectedProjectId: number | null = null;
 
-  constructor(private employeeService: EmployeeService, private loginService: LoginService, private payrollService: PayrollService, private router: Router, private projectService: ProjectService, private snackBar: MatSnackBar) {}
+  notifications: any[] = [];
+  pollingInterval: any;
+
+  constructor(private employeeService: EmployeeService, private loginService: LoginService, private payrollService: PayrollService, private router: Router, private projectService: ProjectService, private snackBar: MatSnackBar, private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     const employeeId = this.loginService.getEmployeeId();
@@ -50,6 +56,36 @@ export class EmployeeDashboardComponent implements OnInit {
     } else {
       console.error('Employee ID is null.');
     }
+
+    this.startPollingNotifications();
+  }
+
+  ngOnDestroy() {
+    // Stop polling when component is destroyed
+    this.stopPollingNotifications();
+  }
+
+  fetchNotifications(): void {
+    if (!this.employee.id) {
+      console.error('Employee ID is required to fetch notifications.');
+      return;
+    }
+    // Make HTTP GET request to fetch notifications for a specific employee
+    this.http.get<any[]>(`http://localhost:8091/notifications/${this.employee.id}`)
+      .subscribe(data => {
+        this.notifications = data;
+        console.log('Fetched notifications:', this.notifications);
+      });
+  }
+
+  startPollingNotifications() {
+    this.pollingInterval = setInterval(() => {
+      this.fetchNotifications();
+    }, 5000); // Poll every 5 seconds
+  }
+
+  stopPollingNotifications() {
+    clearInterval(this.pollingInterval);
   }
 
   loadEmployeeDetails(employeeId: number) {
@@ -102,8 +138,6 @@ export class EmployeeDashboardComponent implements OnInit {
   togglePayroll() {
     this.showPayroll = !this.showPayroll;
     this.showDetails = false;
-
-    //
     this.showProjects = false;
 
     if (this.showPayroll && this.employee?.id !== undefined) {
@@ -129,6 +163,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.showDetails = false;
     this.showPayroll = false;
     this.showProjects = !this.showProjects;
+
     // Fetch assigned projects if the section is to be shown
     if (this.showProjects && this.employee?.id !== undefined) {
       this.projectService.getAssignedProjects(this.employee.id).subscribe({

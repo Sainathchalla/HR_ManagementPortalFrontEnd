@@ -1,11 +1,14 @@
 <div class="hr-dashboard">
-    <h2>HR Dashboard</h2>
-    <button (click)="router.navigate(['/add-employee'])">Add Employee</button>
-    <button (click)="router.navigate(['/view-employees'])">View Employees</button>
-    <button (click)="router.navigate(['/add-payroll'])">Add Payroll</button>
-    <button (click)="router.navigate(['/view-payroll'])">View Payrolls</button>
-    <button (click)="router.navigate(['/add-project'])">Add Project</button>
-    <button (click)="router.navigate(['/view-projects'])">View Projects</button>
-    <button (click)="logout()">Logout</button>
+    <div class="header">
+        <h2>HR Dashboard</h2>
+        <button class="logout" (click)="logout()">Logout</button>
+    </div>
+    <div class="content">
+        <button (click)="router.navigate(['/add-employee'])">Add Employee</button>
+        <button (click)="router.navigate(['/view-employees'])">View Employees</button>
+        <button (click)="router.navigate(['/add-payroll'])">Add Payroll</button>
+        <button (click)="router.navigate(['/view-payroll'])">View Payrolls</button>
+        <button (click)="router.navigate(['/add-project'])">Add Project</button>
+        <button (click)="router.navigate(['/view-projects'])">View Projects</button>
+    </div>
 </div>
-  

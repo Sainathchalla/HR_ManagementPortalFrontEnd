@@ -2,9 +2,15 @@
     <h2>Employee Dashboard</h2>
     <button (click)="showDetails = !showDetails; showPayroll = false; showProjects = false">View Details</button>
     <button (click)="togglePayroll()">View Payroll</button>
-    <button (click)="viewAssignedProjects()">View Assigned Projects</button> 
+    <button (click)="viewAssignedProjects()">View Assigned Projects</button>
     <button (click)="logout()">Logout</button>
-    
+  
+    <div class="notification-dropdown" *ngIf="notifications.length > 0">
+      <div class="notification-item" *ngFor="let notification of notifications">
+        <p>You are {{ notification.status }} with {{ notification.projectName }} (ID: {{ notification.projectId }}).</p>
+      </div>
+    </div>
+  
     <div *ngIf="showDetails">
       <form (ngSubmit)="saveEmployeeDetails()">
         <div>
@@ -62,7 +68,7 @@
         <input type="text" [(ngModel)]="payrollData.taxInformation" name="taxInformation" readonly>
       </div>
     </div>
-
+  
     <div *ngIf="showProjects && assignedProjects.length > 0">
       <h3>Assigned Projects</h3>
       <table class="project-table">
@@ -90,7 +96,7 @@
         </tbody>
       </table>
     </div>
-
+  
     <div *ngIf="showProjectEmployees && selectedProjectEmployees.length > 0">
       <h3>Team Members</h3>
       <table class="employee-table">
@@ -114,7 +120,7 @@
         </tbody>
       </table>
     </div>
-
+  
     <div *ngIf="showPayroll && payrollData === null">
       <p>No assigned payrolls.</p>
     </div>
@@ -122,4 +128,3 @@
       <p>No assigned projects.</p>
     </div>
   </div>
-  
