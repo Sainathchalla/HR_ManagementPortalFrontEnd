@@ -1,0 +1,272 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-image: url('../../../public/backiee-250541-landscape.jpg'); /* Use the correct image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h2 {
+  font-size: 24px;
+  color: darkorange;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.employee-dashboard {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar styling */
+.nav-bar {
+  background-color: #4B0082;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-bar img {
+  height: 50px;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.notification-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+}
+
+.notification-btn .material-icons {
+  font-size: 24px;
+  color: white;
+  
+}
+
+.new-notification-symbol {
+  position: absolute;
+  top: 2px;
+  right: 7px;
+  height: 7px;
+  width: 7px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 2px;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  width: 300px;
+  max-height: 200px; /* Limit the height of the dropdown */
+  overflow-y: auto; /* Enable scrolling */
+  z-index: 200;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item p {
+  margin: 0;
+}
+
+.logout-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 13px;
+}
+
+.logout-btn:hover {
+  background-color: #0056b3;
+}
+
+.nav-bar h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+/* Sidebar styling */
+.container {
+  display: flex;
+  height: calc(100% - 70px);
+  margin-top: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar {
+  background-color: orange;
+  padding: 20px;
+  border-radius: 5px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: fixed;
+  top: 70px;
+}
+
+.employee-greeting {
+  margin-bottom: 20px;
+}
+
+.hi-text {
+  font-size: 16px;
+  color: #000;
+}
+
+.employee-name {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+}
+
+.sidebar button {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 18px;
+  background-color: darkorange;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #e65c00;
+  transform: scale(1.05);
+}
+
+.sidebar button:active {
+  background-color: #e65c00;
+  transform: translateY(1px);
+}
+
+/* Content Section Styling */
+.content {
+  margin-left: 230px;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Form layout styling */
+.form-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.form-grid label {
+  font-weight: bold;
+  text-align: right;
+}
+
+.form-grid input[type="text"],
+.form-grid input[type="email"],
+.form-grid input[type="date"] {
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.form-grid input[readonly] {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.save-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4B0082;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  grid-column: span 2;
+  justify-self: center;
+}
+
+.save-button:hover {
+  background-color: #370065;
+}
+
+.project-table,
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.project-table th,
+.project-table td,
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.project-table th,
+.employee-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.project-table tr:nth-child(even),
+.employee-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.project-table tr:hover,
+.employee-table tr:hover {
+  background-color: #f1f1f1;
+}

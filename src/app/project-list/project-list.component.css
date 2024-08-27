@@ -1,0 +1,109 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('../../../public/backiee-250541-landscape.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+.back-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.project-list {
+  width: 80%;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  /* Add a semi-transparent background for readability */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-list h2 {
+  font-size: 24px;
+  color: darkorange;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.project-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.project-list th,
+.project-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.project-list th {
+  background-color: #4B0082;
+  color: #fff;
+}
+
+.project-list tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.project-list tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.project-list td button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.project-list td button:hover {
+  background-color: #0056b3;
+}
+
+.project-list td button:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+}
+
+.back-button {
+  padding: 10px 10px;
+  font-size: 14px;
+  background-color: darkorange;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.back-button:active {
+  background-color: #5a6268;
+  transform: translateY(1px);
+}

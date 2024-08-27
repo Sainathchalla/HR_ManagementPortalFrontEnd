@@ -1,0 +1,47 @@
+<div class="main-content">
+  <div class="employee-form">
+
+    <div class="back-button-container">
+      <button (click)="goBack()" class="back-button">Back</button> <!-- Back button -->
+    </div>
+
+    <h2>{{ isEditMode ? 'Update Employee' : 'Add Employee' }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" [(ngModel)]="employee.name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" [(ngModel)]="employee.email" name="email" required>
+      </div>
+      <div *ngIf="!isEditMode">
+        <label for="password">Password:</label>
+        <input type="password" [(ngModel)]="employee.password" name="password" required>
+      </div>
+      <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" [(ngModel)]="employee.phoneNumber" name="phoneNumber" required>
+      </div>
+      <div>
+        <label for="address">Address:</label>
+        <input type="text" [(ngModel)]="employee.address" name="address" required>
+      </div>
+      <div>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" required>
+      </div>
+      <div>
+        <label for="hireDate">Hire Date:</label>
+        <input type="date" [(ngModel)]="employee.hireDate" name="hireDate" required>
+      </div>
+      <div>
+        <label for="position">Position:</label>
+        <input type="text" [(ngModel)]="employee.position" name="position" required>
+      </div>
+      <div class="submit-button-container">
+        <button type="submit" class="submit-button">{{ isEditMode ? 'Update Employee' : 'Add Employee' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

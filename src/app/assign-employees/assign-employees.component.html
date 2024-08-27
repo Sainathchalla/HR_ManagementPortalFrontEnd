@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <div class="assign-employees">
+      <div class="back-button-container">
+        <button (click)="goBack()" class="back-button">Back</button>
+      </div>
+      <h2>Assign Employees to Project</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div>
+          <label class="select-label">Select Employees:</label>
+          <div class="employee-checkbox" *ngFor="let employee of employees">
+            <input
+              type="checkbox"
+              [id]="employee.id"
+              [value]="employee.id"
+              (change)="onCheckboxChange($event)"
+              [checked]="selectedEmployees.includes(employee.id)"
+            />
+            <label [for]="employee.id">{{ employee.name }}</label>
+          </div>
+        </div>
+        <div class="submit-button-container">
+          <button type="submit" class="submit-button">Save</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

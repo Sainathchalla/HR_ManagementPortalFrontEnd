@@ -1,0 +1,150 @@
+/* Container for the form */
+.main-content {
+  background-image: url('../../../public/backiee-250541-landscape.jpg'); /* Add your background image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.project-form {
+  max-width: 800px; /* Consistent width */
+  width: 90%;
+  margin: 20px auto;
+  background-color: #ffffff; /* White background */
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Enable horizontal scrolling */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form title */
+.project-form h2 {
+  font-size: 28px;
+  color: darkorange;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form grid layout */
+.project-form form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Label styling */
+.project-form label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Input styling */
+.project-form input[type="text"],
+.project-form input[type="date"],
+.project-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
+  margin-bottom: 10px;
+  background-color: #ffffff; /* White background color */
+}
+
+/* Input focus state */
+.project-form input[type="text"]:focus,
+.project-form input[type="date"]:focus,
+.project-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #FFB347; /* Lighter orange on focus */
+}
+
+/* Submit button styling */
+.project-form .submit-button-container {
+  grid-column: 1 / -1; /* Span all columns */
+  text-align: center; /* Center the button */
+}
+
+.project-form .submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4B0082;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Submit button hover state */
+.project-form .submit-button:hover {
+  background-color: #3a006b;
+}
+
+/* Submit button active state */
+.project-form .submit-button:active {
+  background-color: #2c004d;
+  transform: translateY(1px);
+}
+
+/* Back button styling */
+.back-button-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 20px 0;
+  width: 100%;
+}
+
+.back-button {
+  padding: 10px 10px;
+  font-size: 14px;
+  background-color: darkorange;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #e69500; /* Darker orange on hover */
+}
+
+.back-button:active {
+  background-color: #cc7a00; /* Even darker orange on active */
+  transform: translateY(1px);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .project-form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .project-form h2 {
+    font-size: 24px;
+  }
+
+  .project-form input[type="text"],
+  .project-form input[type="date"],
+  .project-form textarea {
+    font-size: 14px;
+  }
+
+  .project-form .submit-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}

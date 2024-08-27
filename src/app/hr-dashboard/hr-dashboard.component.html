@@ -1,0 +1,60 @@
+   <!-- <div class="parent">
+    <div class="child">
+      <nav class="nav-bar">
+        <img src="fedex_logo.png" id="logo" />
+        <h1>HR Management Portal</h1>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+        
+        <div class="burger-menu" (click)="toggleSidebar()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="sidebar" [ngClass]="{'sidebar-open': sidebarVisible}">
+          <button (click)="router.navigate(['/add-employee'])">Add Employee</button>
+          <button (click)="router.navigate(['/view-employees'])">View Employees</button>
+          <button (click)="router.navigate(['/add-payroll'])">Add Payroll</button>
+          <button (click)="router.navigate(['/view-payroll'])">View Payrolls</button>
+          <button (click)="router.navigate(['/add-project'])">Add Project</button>
+          <button (click)="router.navigate(['/view-projects'])">View Projects</button>
+        </div>
+        <div class="main-content">
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  
+  <div class="parent">
+    <div class="child">
+      <nav class="nav-bar">
+        <img src="fedex_logo.png" id="logo" />
+        <h1>HR Management Portal</h1>
+        <!-- Burger Menu Icon -->
+        <div class="burger-menu" (click)="toggleSidebar()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="sidebar" [ngClass]="{'sidebar-open': sidebarVisible}">
+          <button (click)="router.navigate(['/add-employee'])">Add Employee</button>
+          <button (click)="router.navigate(['/view-employees'])">View Employees</button>
+          <button (click)="router.navigate(['/add-payroll'])">Add Payroll</button>
+          <button (click)="router.navigate(['/view-payroll'])">View Payrolls</button>
+          <button (click)="router.navigate(['/add-project'])">Add Project</button>
+          <button (click)="router.navigate(['/view-projects'])">View Projects</button>
+          <!-- Logout button inside the sidebar -->
+          <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+        <div class="main-content">
+          <!-- Your main content goes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

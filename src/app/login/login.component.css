@@ -1,0 +1,88 @@
+/* Ensure the background image is only for the login page */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 70px); /* Subtract the height of the navbar */
+  background: url('../../../public/login-page-bg-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin:0%; /* Add space for the navbar */
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7); /* More opaque background for better readability */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 400px; /* Adjusted width */
+  width: 100%;
+  margin: auto; /* Centered horizontally */
+}
+
+.login-content h2 {
+  margin-bottom: 20px;
+  color: darkorange;
+}
+
+form {
+  padding: 30px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0);
+  width: 100%;
+  max-width: 400px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--fdx-purple);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #663399;
+}

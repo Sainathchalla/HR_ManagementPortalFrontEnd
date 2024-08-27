@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="employee-dashboard.component.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav-bar">
+    <img src="fedex_logo.png" id="logo" />
+    <h1>HR Management Portal</h1>
+    <div class="nav-icons">
+      <button class="notification-btn" (click)="toggleNotifications()">
+        <span class="material-icons">notifications</span>
+        <span *ngIf="hasNewNotifications" class="new-notification-symbol">*</span>
+      </button>
+      <div class="notification-dropdown" *ngIf="showNotifications">
+        <div class="notification-item" *ngFor="let notification of notifications">
+          <p>You are {{ notification.status }} with {{ notification.projectName }} (ID: {{ notification.projectId }}).</p>
+        </div>
+      </div>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="employee-greeting">
+        <span class="hi-text">Hi </span><span class="employee-name">{{employee.name}}</span>
+      </div>
+      <button (click)="showDetails = !showDetails; showPayroll = false; showProjects = false">View Details</button>
+      <button (click)="togglePayroll()">View Payroll</button>
+      <button (click)="viewAssignedProjects()">View Assigned Projects</button>
+    </div>
+
+    <div class="content">
+      <div *ngIf="showDetails" class="details-content content-box">
+        <h2>Employee Details</h2>
+        <form (ngSubmit)="saveEmployeeDetails()" class="form-grid">
+          <div>
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" [(ngModel)]="employee.id" name="employeeId" readonly>
+          </div>
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" [(ngModel)]="employee.name" name="name" readonly>
+          </div>
+          <div>
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" [(ngModel)]="employee.phoneNumber" name="phoneNumber">
+          </div>
+          <div>
+            <label for="address">Address:</label>
+            <input type="text" [(ngModel)]="employee.address" name="address">
+          </div>
+          <div>
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" readonly>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" [(ngModel)]="employee.email" name="email" readonly>
+          </div>
+          <div>
+            <label for="hireDate">Hire Date:</label>
+            <input type="date" [(ngModel)]="employee.hireDate" name="hireDate" readonly>
+          </div>
+          <div>
+            <label for="position">Position:</label>
+            <input type="text" [(ngModel)]="employee.position" name="position" readonly>
+          </div>
+          <button class="save-button" type="submit">Save Details</button>
+        </form>
+      </div>
+
+      <div *ngIf="showPayroll && payrollData" class="payroll-content content-box">
+        <h2>Payroll Details</h2>
+        <form class="form-grid">
+        <div>
+          <label for="salary">Salary:</label>
+          <input type="text" [(ngModel)]="payrollData.salary" name="salary" readonly>
+        </div>
+        <div>
+          <label for="bonuses">Bonuses:</label>
+          <input type="text" [(ngModel)]="payrollData.bonuses" name="bonuses" readonly>
+        </div>
+        <div>
+          <label for="deductions">Deductions:</label>
+          <input type="text" [(ngModel)]="payrollData.deductions" name="deductions" readonly>
+        </div>
+        <div>
+          <label for="taxInformation">Tax Information:</label>
+          <input type="text" [(ngModel)]="payrollData.taxInformation" name="taxInformation" readonly>
+        </div>
+        </form>
+      </div>
+
+      <div *ngIf="showProjects && assignedProjects.length > 0" class="projects-content content-box">
+        <h2>Assigned Projects</h2>
+        <table class="project-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of assignedProjects">
+              <td>{{ project.id }}</td>
+              <td>{{ project.name }}</td>
+              <td>{{ project.description }}</td>
+              <td>{{ project.startDate | date }}</td>
+              <td>{{ project.endDate | date }}</td>
+              <td>
+                <button (click)="loadProjectEmployees(project.id!)" style="background-color: #370065; color: white;">Team</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="showProjectEmployees && selectedProjectEmployees.length > 0" class="project-employees-content content-box">
+        <h2>Team Members</h2>
+        <table class="employee-table">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of selectedProjectEmployees">
+              <td>{{ employee.id }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.email }}</td>
+              <td>{{ employee.phoneNumber }}</td>
+              <td>{{ employee.position }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="showPayroll && payrollData === null">
+        <p>No assigned payrolls.</p>
+      </div>
+      <div *ngIf="showProjects && assignedProjects.length === 0">
+        <p>No assigned projects.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

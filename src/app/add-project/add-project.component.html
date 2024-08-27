@@ -1,0 +1,35 @@
+<html>
+  <body>
+    <!-- Project Form -->
+    <div class="main-content">
+      <div class="project-form">
+        <!-- Back Button -->
+        <div class="back-button-container">
+          <button (click)="goBack()" class="back-button">Back</button>
+        </div>
+        <h2>{{ isEditMode ? 'Update Project' : 'Add Project' }}</h2>
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+          <div>
+            <label for="name">Project Name:</label>
+            <input id="name" type="text" formControlName="name" required>
+          </div>
+          <div>
+            <label for="startDate">Start Date:</label>
+            <input id="startDate" type="date" formControlName="startDate" required>
+          </div>
+          <div>
+            <label for="endDate">End Date:</label>
+            <input id="endDate" type="date" formControlName="endDate" required>
+          </div>
+          <div>
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description" required></textarea>
+          </div>
+          <div class="submit-button-container">
+            <button type="submit" class="submit-button">{{ isEditMode ? 'Update Project' : 'Add Project' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
